@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/lib/generated/prisma
+
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/glamcept"
+
