@@ -1,28 +1,32 @@
-"use client";
-import { createContext, useContext, useState } from "react";
+'use client';
 
-const CartContext = createContext<any>(null);
+import { createContext, useContext, useState, ReactNode } from 'react';
 
-export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState([]);
+export interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
 
-  const addToCart = async (productId: string, quantity = 1) => {
-    const res = await fetch("/api/cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ productId, quantity }),
-    });
-    const data = await res.json();
-    setCart((prev) => [...prev, data]);
+interface CartContextType {
+  cart: CartItem[];
+  addToCart: (item: CartItem) => void;
+  removeFromCart: (id: string) => void;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const addToCart = (item: CartItem) => {
+    setCart((prev: CartItem[]) => [...prev, item]);
   };
 
-  const removeFromCart = async (id: string) => {
-    await fetch("/api/cart", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id: string) => {
+    setCart((prev: CartItem[]) => prev.filter((item) => item.id !== id));
   };
 
   return (
@@ -30,6 +34,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       {children}
     </CartContext.Provider>
   );
-}
+};
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used inside CartProvider');
+  }
+  return context;
+};
