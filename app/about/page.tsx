@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
+import Image from 'next/image';
 
 
 export default function About() {
@@ -87,7 +88,7 @@ export default function About() {
           </motion.p>
 
           <motion.p variants={fadeUp} className="text-gray-700 leading-relaxed mb-8 text-sm">
-            Today, Glamcept is more than just a cosmetics brand. We're a community of
+            Today, Glamcept is more than just a cosmetics brand. We&apos;re a community of
             confident women who believe that beauty comes from within, and the right
             products can help you express that inner glow to the world.
           </motion.p>
@@ -97,10 +98,13 @@ export default function About() {
             whileHover={{ scale: 1.02 }}
             className="flex justify-start"
           >
-            <img
-              src="/images/beauty-empowers.jpg"
-              alt="Beauty That Empowers"
-              className="rounded-xl shadow-md w-full object-cover"
+
+            <Image
+                src="/images/beauty-empowers.jpg"
+                alt="Beauty That Empowers"
+                width={800}   // adjust as needed
+                height={600}  // adjust as needed
+                className="rounded-xl shadow-md object-cover w-full"
             />
           </motion.div>
         </motion.div>
@@ -115,11 +119,13 @@ export default function About() {
             whileHover={{ scale: 1.02 }}
             className="flex justify-center"
           >
-            <img
-              src="/images/our-mission.jpg"
-              alt="Our Mission"
-              className="rounded-2xl shadow-lg w-full object-cover"
-            />
+            <Image
+                src="/images/our-mission.jpg"
+                alt="Our Mission"
+                width={800}   // adjust as needed
+                height={600}  // adjust as needed
+                className="rounded-xl shadow-md object-cover w-full"
+                />
           </motion.div>
 
           <motion.h2
@@ -184,7 +190,7 @@ export default function About() {
                 {i === 2 &&
                   "Beauty has no boundaries. Our products are designed to celebrate and enhance every woman’s unique features."}
                 {i === 3 &&
-                  "We're committed to responsible practices that protect our planet for future generations."}
+                  "We&apos;re committed to responsible practices that protect our planet for future generations."}
               </p>
             </motion.div>
           ))}
