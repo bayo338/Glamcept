@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -8,7 +9,7 @@ export default function ContactPage() {
       <div className="w-full text-center py-16 bg-gradient-to-b from-purple-300 to-white">
         <h1 className="text-3xl font-bold text-purple-800 font-serif">Get in Touch</h1>
         <p className="mt-2 text-gray-700">
-          We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          We'd love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
         </p>
       </div>
 

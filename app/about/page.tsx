@@ -218,10 +218,12 @@ export default function About() {
             whileHover={{ scale: 1.08 }}
             className="flex justify-center mb-6"
           >
-            <img
-              src="/images/founder.jpg"
-              alt="Founder"
-              className="w-20 h-20 rounded-full object-cover border-2 border-purple-400 shadow-md"
+            <Image
+                src="/images/founder.jpg"
+                alt="Founder"
+                width={80}   // corresponds to w-20 (20 * 4px)
+                height={80}  // corresponds to h-20
+                className="rounded-full object-cover border-2 border-purple-400 shadow-md"
             />
           </motion.div>
 
@@ -229,8 +231,8 @@ export default function About() {
             variants={fadeUp}
             className="text-gray-700 leading-relaxed max-w-3xl mx-auto italic mb-6"
           >
-            "When I started Glamcept, I had one simple goal: to create products that would
-            make every woman feel as beautiful on the outside as she is on the inside..."
+            &quot;When I started Glamcept, I had one simple goal: to create products that would
+            make every woman feel as beautiful on the outside as she is on the inside...&quot;
           </motion.p>
 
           <motion.div variants={fadeUp} className="text-gray-800 mt-4">
