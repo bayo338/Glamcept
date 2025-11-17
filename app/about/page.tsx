@@ -1,19 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { easeOut } from "framer-motion";
+
 
 export default function About() {
   // -----------------------
   // Luxury Framer Motion Variants
   // -----------------------
   const fadeUp = {
-    hidden: { opacity: 0, y: 25 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easeOut,
     },
-  };
+  },
+};
+
 
   const staggerContainer = {
     visible: {
@@ -26,7 +32,8 @@ export default function About() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" },
+      transition: { duration: 0.7, ease: easeOut
+ },
     },
   };
 
