@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const slides = [
   {
@@ -23,24 +23,20 @@ const slides = [
   },
 ];
 
-const fadeUp = {
+// typed variants
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
     y: 0,
-    transition: {
-      ease: [0.22, 1, 0.36, 1], // luxury smooth curve
-      duration: 1.2,
-    },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
-const staggerParent = {
+const staggerChildren: Variants = {
   hidden: {},
   show: {
-    transition: {
-      staggerChildren: 0.25, // gentle stagger
-    },
+    transition: { staggerChildren: 0.25 },
   },
 };
 
@@ -60,15 +56,15 @@ export default function HeroSection() {
               className="h-full w-full bg-cover bg-center relative flex items-center justify-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              {/* Soft Glam Overlay */}
+              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/25 to-black/50" />
 
-              {/* Animated Content */}
+              {/* Animated content */}
               <motion.div
-                variants={staggerParent}
+                className="relative z-10 text-center text-white max-w-2xl px-4"
+                variants={staggerChildren}
                 initial="hidden"
                 animate="show"
-                className="relative z-10 text-center text-white max-w-2xl px-4"
               >
                 <motion.h1
                   variants={fadeUp}

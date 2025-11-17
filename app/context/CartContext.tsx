@@ -22,11 +22,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
-    setCart((prev: CartItem[]) => [...prev, item]);
+    setCart((prev) => [...prev, item]);
   };
 
   const removeFromCart = (id: string) => {
-    setCart((prev: CartItem[]) => prev.filter((item) => item.id !== id));
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (

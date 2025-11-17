@@ -2,21 +2,36 @@
 
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { motion } from 'framer-motion';
+import type { PaginationOptions } from 'swiper/types';
+import { motion, Variants } from 'framer-motion';
 
-const fadeUp = {
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: string;
+  image: string;
+}
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut' },
+  },
 };
 
-const fadeUpDelay = (delay) => ({
+const fadeUpDelay = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut', delay } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay },
+  },
 });
 
-const products = [
+const products: Product[] = [
   {
     id: 1,
     name: 'Rose Gold Lipstick',
@@ -51,13 +66,13 @@ export default function TopSellers() {
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
-
+        
         {/* Title */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="mb-6"
         >
           <h2 className="text-xl md:text-4xl font-bold uppercase text-[#4B1D3F] relative inline-block">
@@ -71,16 +86,22 @@ export default function TopSellers() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="text-center mb-10"
         >
           <h3 className="text-4xl font-serif text-[#4B1D3F] mb-2">Top Sellers</h3>
-          <p className="text-gray-500 font-sans">Our most loved picks — selected by you!</p>
+          <p className="text-gray-500 font-sans">
+            Our most loved picks — selected by you!
+          </p>
         </motion.div>
 
         {/* Mobile Swiper */}
         <div className="block md:hidden">
-          <Swiper spaceBetween={16} slidesPerView={1.2} pagination={{ clickable: true }}>
+          <Swiper
+            spaceBetween={16}
+            slidesPerView={1.2}
+            pagination={{ clickable: true } as PaginationOptions}
+          >
             {products.map((product, index) => (
               <SwiperSlide key={product.id}>
                 <motion.div
@@ -93,8 +114,9 @@ export default function TopSellers() {
                   {/* Animated Image */}
                   <motion.div
                     initial={{ scale: 1.05, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
+                    viewport={{ once: true }}
                     className="relative w-full h-56 overflow-hidden rounded-2xl shadow-sm bg-[#f7f0fa]"
                   >
                     <Image
@@ -131,8 +153,9 @@ export default function TopSellers() {
             >
               <motion.div
                 initial={{ scale: 1.05, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true }}
                 className="relative w-full h-56 overflow-hidden rounded-2xl shadow-sm bg-[#f7f0fa]"
               >
                 <Image

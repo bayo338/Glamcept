@@ -1,4 +1,6 @@
 import './globals.css';
+
+
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Lato } from 'next/font/google';
 import Navbar from '@/components/Navbar';

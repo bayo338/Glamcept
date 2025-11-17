@@ -2,16 +2,27 @@
 
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { motion } from 'framer-motion';
+import type { PaginationOptions } from 'swiper/types';
+import { motion, Variants } from 'framer-motion';
 
-const fadeUp = {
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: string;
+  image: string;
+}
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut' },
+  },
 };
 
-const fadeUpDelay = (delay) => ({
+const fadeUpDelay = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -20,7 +31,7 @@ const fadeUpDelay = (delay) => ({
   },
 });
 
-const newArrivals = [
+const newArrivals: Product[] = [
   { id: 5, name: 'Velvet Matte Lip Tint', category: 'Lipstick', price: '$22.00', image: '/images/liptint.jpg' },
   { id: 6, name: 'Silk Touch Concealer', category: 'Concealer', price: '$19.99', image: '/images/concealer.jpg' },
   { id: 7, name: 'Luminous Liquid Highlighter', category: 'Highlighter', price: '$27.50', image: '/images/highlighter.jpg' },
@@ -37,7 +48,7 @@ export default function NewArrivals() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="text-4xl font-serif text-[#4B1D3F] mb-2"
         >
           New Arrivals
@@ -47,7 +58,7 @@ export default function NewArrivals() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="text-gray-500 font-sans mb-12"
         >
           Discover the latest beauty essentials, just in!
@@ -55,7 +66,11 @@ export default function NewArrivals() {
 
         {/* Mobile Carousel */}
         <div className="block md:hidden">
-          <Swiper spaceBetween={16} slidesPerView={1.2} pagination={{ clickable: true }}>
+          <Swiper
+            spaceBetween={16}
+            slidesPerView={1.2}
+            pagination={{ clickable: true } as PaginationOptions}
+          >
             {newArrivals.map((product, index) => (
               <SwiperSlide key={product.id}>
                 <motion.div
@@ -68,8 +83,9 @@ export default function NewArrivals() {
                   {/* Image */}
                   <motion.div
                     initial={{ opacity: 0, scale: 1.06 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
+                    viewport={{ once: true }}
                     className="relative w-full h-48 overflow-hidden rounded-xl"
                   >
                     <Image
@@ -106,8 +122,9 @@ export default function NewArrivals() {
             >
               <motion.div
                 initial={{ opacity: 0, scale: 1.06 }}
-                animate={{ opacity: 1, scale: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true }}
                 className="relative w-full h-48 overflow-hidden rounded-xl"
               >
                 <Image
