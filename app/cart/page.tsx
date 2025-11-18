@@ -4,7 +4,7 @@ import { Lock } from "lucide-react";
 export default function CartPage() {
   return (
     <div className="min-h-screen bg-[#fdfcfd] px-6 py-12">
-      <div className="max-w-6xl mx-32">
+      <div className="md:mx-32">
 
         {/* Page Title */}
         <div className="mb-8">

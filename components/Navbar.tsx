@@ -19,18 +19,18 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white text-[#D8B4E2] font-sans shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-    <Link href="/" className="flex items-center font-bold gap-2 text-3xl font-serif tracking-wide text-[#D8B4E2]">
-      <Image
-        src="/logo.png" // Place logo.png in your /public folder
-        alt="Glamcept logo"
-        width={48}
-        height={48}
-        priority
-      />
-      <span>Glamcept</span>
-    </Link>
+        <Link href="/" className="flex items-center font-bold gap-2 text-3xl font-serif tracking-wide text-[#D8B4E2]">
+          <Image
+            src="/logo.png"
+            alt="Glamcept logo"
+            width={48}
+            height={48}
+            priority
+          />
+          <span>Glamcept</span>
+        </Link>
 
 
         {/* Desktop Menu */}
@@ -81,7 +81,7 @@ export default function Navbar() {
         </button>
 
         {/* Logo + Brand */}
-        <Link
+        {/* <Link
         href="/"
         onClick={() => setMobileMenuOpen(false)}
         className="flex items-center gap-2 text-2xl font-serif text-[#D8B4E2] mb-6"
@@ -94,11 +94,11 @@ export default function Navbar() {
             priority
         />
         <span>Glamcept</span>
-        </Link>
+        </Link> */}
 
         {/* Nav Links */}
         <div className="flex flex-col gap-4 mt-2">
-        {[...navItems, { name: 'Login', path: '/login' }, { name: 'Sign Up', path: '/register' }].map((item) => (
+        {[...navItems, { name: 'Login', path: '/admin/login' }, { name: 'Sign Up', path: '/admin/signup' }].map((item) => (
             <Link
             key={item.name}
             href={item.path}

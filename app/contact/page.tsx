@@ -14,7 +14,7 @@ export default function ContactPage() {
       </div>
 
       {/* Form + Boxes Container (Left-Aligned) */}
-      <div className="px-36 py-12">
+      <div className="md:px-36 py-12">
         <div className="max-w-lg space-y-10">
 
           {/* Form Section */}

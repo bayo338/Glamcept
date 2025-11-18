@@ -39,12 +39,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
       <body className={`${inter.className} bg-white text-gray-800`}>
-        <Navbar />
-        <main><CartProvider>
-        {children}
+        <CartProvider>
+          <Navbar />
+          <main className=''>        
+          {children}        
+          </main>
+          <Footer />
         </CartProvider>
-        </main>
-        <Footer />
       </body>
     </html>
   );

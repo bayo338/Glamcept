@@ -7,8 +7,8 @@ const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] })
 
 const Footer = () => {
   return (
-    <footer className={`${lato.className} bg-[#f7f2f5] text-gray-700 text-sm px-10 md:px-20 py-10`}>
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+    <footer className={`${lato.className} bg-[#f7f2f5] text-gray-700 text-sm px-10 md:px-20 py-10 w-full`}>
+      <div className="mx-auto flex flex-col md:flex-row justify-between gap-8">
         {/* Logo & Description */}
         <div>
           <h3 className={`${playfair.className} text-lg font-semibold text-[#4B1D3F] mb-2`}>Glamcept</h3>

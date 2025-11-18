@@ -64,7 +64,7 @@ export default function About() {
         {/* SECTION 1 */}
         <motion.div
           variants={fadeUp}
-          className="max-w-lg mx-40 space-y-6"
+          className="max-w-lg mx-8 md:mx-40 space-y-6"
         >
           <motion.h2
             variants={fadeUp}
@@ -112,7 +112,7 @@ export default function About() {
         {/* SECTION 2 */}
         <motion.div
           variants={fadeUp}
-          className="max-w-lg mx-40 space-y-6"
+          className="max-w-lg mx-8 md:mx-40 space-y-6"
         >
           <motion.div
             variants={softReveal}
